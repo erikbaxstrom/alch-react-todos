@@ -1,3 +1,5 @@
+import Auth from './components/Auth/auth';
+
 import './App.css';
 
 function App() {
@@ -6,6 +8,7 @@ function App() {
       <header>
         <h1>To Do List</h1>
       </header>
+      <Auth />
     </div>
   );
 }
