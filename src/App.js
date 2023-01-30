@@ -1,3 +1,4 @@
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Auth from './components/Auth/auth';
 
 import './App.css';
@@ -8,7 +9,9 @@ function App() {
       <header>
         <h1>To Do List</h1>
       </header>
-      <Auth />
+      <Switch>
+        <Route path="/auth" component={Auth} />
+      </Switch>
     </div>
   );
 }
