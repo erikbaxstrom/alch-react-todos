@@ -10,7 +10,7 @@ function App() {
         <h1>To Do List</h1>
       </header>
       <Switch>
-        <Route path="/auth" component={Auth} />
+        <Route path="/auth/:type" component={Auth} />
       </Switch>
     </div>
   );

@@ -6,6 +6,7 @@ export function getUser() {
 
 export async function authUser(email, password) {
   const response = await client.auth.signUp({ email, password });
+  // console.log(response);
 
   if (response.error) throw response.error;
 
