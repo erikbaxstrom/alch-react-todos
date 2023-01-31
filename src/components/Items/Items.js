@@ -12,8 +12,6 @@ export default function Items() {
     return <Redirect to="/sign-in" />;
   }
 
-  const formSubmitHandler = (newItem) => {};
-
   return (
     <>
       <h2>Add Items </h2>

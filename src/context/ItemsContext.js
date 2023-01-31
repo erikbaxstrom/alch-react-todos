@@ -6,7 +6,17 @@ const ItemsProvider = ({ children }) => {
   const [items, setItems] = useState([]);
 
   const addItemHandler = (item) => {
-    console.log('item to add:', item);
+    //ToDo:
+    // try/catch, call to items service to add the thing to the db
+    // if success, expect new item to be returned.
+    // add the new item to local state
+    // after that, do the map in the Items component
+    try {
+      //something
+      console.log('item to add:', item);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
