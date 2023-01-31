@@ -30,7 +30,7 @@ export default function Auth() {
         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         <label>Password</label>
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </>
   );
