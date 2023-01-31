@@ -4,11 +4,17 @@ export function getUser() {
   return client.auth.currentUser;
 }
 
-export async function authUser(email, password) {
-  const response = await client.auth.signUp({ email, password });
-  // console.log(response);
+export async function authUser(email, password, loginType) {
+  let response;
+  if (loginType === 'sign-up') {
+    response = await client.auth.signUp({ email, password });
+  } else {
+    response = await client.auth.signIn({ email, password });
+  }
 
-  if (response.error) throw response.error;
+  if (response.error) {
+    throw response.error;
+  }
 
   return response.user;
 }

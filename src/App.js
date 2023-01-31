@@ -1,5 +1,5 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Auth from './components/Auth/auth';
+import Auth from './components/Auth/Auth';
 
 import './App.css';
 
@@ -10,7 +10,7 @@ function App() {
         <h1>To Do List</h1>
       </header>
       <Switch>
-        <Route path="/auth/:type" component={Auth} />
+        <Route path="/auth/:loginType" component={Auth} />
       </Switch>
     </div>
   );

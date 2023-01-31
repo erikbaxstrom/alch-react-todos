@@ -7,9 +7,9 @@ const UserProvider = ({ children }) => {
   const currentUser = getUser();
   const [user, setUser] = useState(currentUser);
 
-  const submitAuthHandler = async (email, password) => {
+  const submitAuthHandler = async (email, password, loginType) => {
     try {
-      const newUser = await authUser(email, password);
+      const newUser = await authUser(email, password, loginType);
       setUser(newUser);
     } catch (e) {
       console.error(e);
