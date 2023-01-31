@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from 'react';
-import { authUser, getUser } from '../services/auth.js';
+import { authUser, getUser, signOut } from '../services/auth.js';
 
 const UserContext = createContext();
 
@@ -16,8 +16,18 @@ const UserProvider = ({ children }) => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      setUser(null);
+      console.log('logged out');
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser, submitAuthHandler }}>
+    <UserContext.Provider value={{ user, setUser, submitAuthHandler, handleLogout }}>
       {children}
     </UserContext.Provider>
   );

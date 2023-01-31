@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, Redirect } from 'react-router-dom';
 import { useUser } from '../../context/UserContext.js';
 
 export default function Auth() {
@@ -7,8 +7,11 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const { loginType } = useParams();
 
-  const { submitAuthHandler } = useUser();
+  const { submitAuthHandler, user } = useUser();
 
+  if (user) {
+    return <Redirect to="/items" />;
+  }
   return (
     <>
       <h2>Auth Page</h2>
