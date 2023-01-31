@@ -1,11 +1,15 @@
 import { createContext, useState, useContext } from 'react';
+// import { useUser } from './UserContext.js';
+import { createItem } from '../services/items.js';
 
 const ItemsContext = createContext();
 
 const ItemsProvider = ({ children }) => {
+  // const { user } = useUser();
+
   const [items, setItems] = useState([]);
 
-  const addItemHandler = (item) => {
+  const addItemHandler = async (newItem) => {
     //ToDo:
     // try/catch, call to items service to add the thing to the db
     // if success, expect new item to be returned.
@@ -13,8 +17,13 @@ const ItemsProvider = ({ children }) => {
     // after that, do the map in the Items component
     try {
       //something
-      console.log('item to add:', item);
+      // console.log('item to add:', item);
+
+      const response = await createItem(newItem);
+      // console.log(response);
+      setItems([response.data, ...items]);
     } catch (e) {
+      // addItem(newItem);
       console.error(e);
     }
   };
