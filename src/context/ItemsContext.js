@@ -1,29 +1,30 @@
-import { createContext, useState, useContext } from 'react';
-// import { useUser } from './UserContext.js';
-import { createItem } from '../services/items.js';
+import { createContext, useState, useContext, useEffect } from 'react';
+import { createItem, fetchItems } from '../services/items.js';
 
 const ItemsContext = createContext();
 
 const ItemsProvider = ({ children }) => {
-  // const { user } = useUser();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetchItems();
+        console.log('response from fetching', response.data);
+        setItems(response.data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchData();
+  }, []);
 
   const [items, setItems] = useState([]);
 
   const addItemHandler = async (newItem) => {
-    //ToDo:
-    // try/catch, call to items service to add the thing to the db
-    // if success, expect new item to be returned.
-    // add the new item to local state
-    // after that, do the map in the Items component
     try {
-      //something
-      // console.log('item to add:', item);
-
+      console.log('addItemHandler called');
       const response = await createItem(newItem);
-      // console.log(response);
       setItems([response.data, ...items]);
     } catch (e) {
-      // addItem(newItem);
       console.error(e);
     }
   };

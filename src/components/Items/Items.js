@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useUser } from '../../context/UserContext.js';
 import { useItems } from '../../context/ItemsContext.js';
+import Item from './Item/Item.js';
 
 export default function Items() {
   const { user } = useUser();
-  const { addItemHandler } = useItems();
+  const { addItemHandler, items } = useItems();
   const [newItem, setNewItem] = useState('');
 
   if (!user) {
@@ -20,17 +21,18 @@ export default function Items() {
           e.preventDefault();
           if (newItem === '') return;
           addItemHandler(newItem);
+          setNewItem('');
         }}
       >
         <label>Add an Item</label>
-        <input type="text" onChange={(e) => setNewItem(e.target.value)}></input>
+        <input type="text" value={newItem} onChange={(e) => setNewItem(e.target.value)}></input>
         <button type="submit">+</button>
       </form>
       <h2>Items</h2>
       <ul>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
+        {items.map((item) => (
+          <Item key={item.id} {...item} />
+        ))}
       </ul>
     </>
   );
