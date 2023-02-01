@@ -20,7 +20,6 @@ const UserProvider = ({ children }) => {
     try {
       await signOut();
       setUser(null);
-      console.log('logged out');
     } catch (e) {
       console.error(e);
     }

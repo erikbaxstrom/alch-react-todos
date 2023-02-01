@@ -11,7 +11,6 @@ const ItemsProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await fetchItems();
-        console.log('response from fetching', response.data);
         setItems(response.data);
       } catch (e) {
         console.error(e);
@@ -22,7 +21,6 @@ const ItemsProvider = ({ children }) => {
 
   const addItemHandler = async (newItem) => {
     try {
-      console.log('addItemHandler called');
       const response = await createItem(newItem);
       setItems([response.data, ...items]);
     } catch (e) {
