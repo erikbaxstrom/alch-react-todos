@@ -1,9 +1,12 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import { createItem, fetchItems } from '../services/items.js';
+import { useUser } from './UserContext.js';
 
 const ItemsContext = createContext();
 
 const ItemsProvider = ({ children }) => {
+  const [items, setItems] = useState([]);
+  const { user } = useUser();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,9 +18,7 @@ const ItemsProvider = ({ children }) => {
       }
     };
     fetchData();
-  }, []);
-
-  const [items, setItems] = useState([]);
+  }, [user]);
 
   const addItemHandler = async (newItem) => {
     try {
