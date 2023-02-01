@@ -13,7 +13,7 @@ function App() {
       <header>
         <h1>To Do List</h1>
         <span>{user && `Hello, ${user.email}`}</span>
-        <button onClick={handleLogout}>Sign Out</button>
+        {user && <button onClick={handleLogout}>Sign Out</button>}
       </header>
       <Switch>
         <Route path="/auth/:loginType" component={Auth} />

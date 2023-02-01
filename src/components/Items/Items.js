@@ -12,7 +12,7 @@ export default function Items() {
   if (!user) {
     return <Redirect to="/sign-in" />;
   }
-
+  console.log('items component');
   return (
     <>
       <h2>Add Items </h2>
