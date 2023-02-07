@@ -14,7 +14,6 @@ export default function Auth() {
   }
   return (
     <>
-      <h2>Auth Page</h2>
       <div>
         <NavLink to="/auth/sign-in">Sign In</NavLink>
         <NavLink to="/auth/sign-up">Sign Up</NavLink>

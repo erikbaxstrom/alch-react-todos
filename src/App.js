@@ -12,19 +12,23 @@ function App() {
     <div className="App">
       <header>
         <h1>To Do List</h1>
-        <span>{user && `Hello, ${user.email}`}</span>
-        {user && <button onClick={handleLogout}>Sign Out</button>}
+        <div>
+          <span>{user && `Hello, ${user.email}`}</span>
+          {user && <button onClick={handleLogout}>Sign Out</button>}
+        </div>
       </header>
-      <Switch>
-        <Route path="/auth/:loginType" component={Auth} />
-        <Route path="/items" component={Items} />
-        <Route path="/">
-          <>
-            {user && <Redirect to="/items" />}
-            {!user && <Redirect to="/auth/sign-in" />}
-          </>
-        </Route>
-      </Switch>
+      <main>
+        <Switch>
+          <Route path="/auth/:loginType" component={Auth} />
+          <Route path="/items" component={Items} />
+          <Route path="/">
+            <>
+              {user && <Redirect to="/items" />}
+              {!user && <Redirect to="/auth/sign-in" />}
+            </>
+          </Route>
+        </Switch>
+      </main>
     </div>
   );
 }

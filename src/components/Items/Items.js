@@ -13,8 +13,8 @@ export default function Items() {
     return <Redirect to="/sign-in" />;
   }
   return (
-    <>
-      <h2>Add Items </h2>
+    <div>
+      {/* <h2>Add Items </h2> */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -33,6 +33,6 @@ export default function Items() {
           <Item key={item.id} {...item} />
         ))}
       </ul>
-    </>
+    </div>
   );
 }
